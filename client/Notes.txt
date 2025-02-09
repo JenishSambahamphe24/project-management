@@ -1,0 +1,8 @@
+ installation
+ vs code extension to lint tailwindcss class is tailwind-intellisense
+ npm i -D prettier-plugin-tailwindcss => this will automatically sort tailwindcss classes. it sorts high impact classess at first automatically
+ npm i -D tailwind-merge 
+
+# setting up redux 
+while setting up redux refer to the code while wrapping with redux store providers, it is different from react. First create DashboardLayout and
+wrap that with storeProvider. i didnt understand it completely but it has to do a lot with separation  of concern while providing store with server side component and client side component

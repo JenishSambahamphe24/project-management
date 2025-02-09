@@ -1,0 +1,18 @@
+#initialise npm 
+#install @types/node typescript ts-node (save dev)
+# npx tsc -- init 
+=> initialises tsconfig file . When working with TypeScript in a Node.js project, we need to initialize TypeScript and install essential dependencies.
+
+=> when installing depedencies with -D flag it saves dependecy to only dev environment. For example we need nodemon is needed only in dev environment using -D flag is important but while instaling express we should not use -D flag because it is also needed in production environment
+
+# in tsconfig file 
+change to "module": "nodenext"
+uncomment and change to     "moduleResolution": "nodenext",
+uncomment to  "resolveJsonModule": true
+uncomment and change to  "outDir": "./dist",  
+=>The "outDir" option specifies the directory where TypeScript will output the compiled .js files.
+"include": ["src/**/*", "src/data/**/*.json", "prisma/**/*"]  
+
+
+
+
