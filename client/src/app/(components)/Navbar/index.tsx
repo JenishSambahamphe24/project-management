@@ -7,7 +7,6 @@ const Navbar = () => {
   const dispatch = useAppDispatch()
   const isSidebarCollapsed = useAppSelector(state => state.global.isSidebarCollapsed)
   const isDarkMode = useAppSelector(state => state.global.isDarkMode)
-  console.log(isDarkMode)
 
 
   return (
