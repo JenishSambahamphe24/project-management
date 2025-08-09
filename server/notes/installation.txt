@@ -1,9 +1,12 @@
 #initialise npm 
 #install @types/node typescript ts-node (save dev)
 # npx tsc -- init 
-=> initialises tsconfig file . When working with TypeScript in a Node.js project, we need to initialize TypeScript and install essential dependencies.
+=> initialises tsconfig file . When working with TypeScript in a Node.js project, we need to initialize TypeScript and install essential 
+dependencies.
 
-=> when installing depedencies with -D flag it saves dependecy to only dev environment. For example we need nodemon is needed only in dev environment using -D flag is important but while instaling express we should not use -D flag because it is also needed in production environment
+=> when installing depedencies with -D flag it saves dependecy to only dev environment. For example we need nodemon is needed only in dev
+ environment using
+ -D flag is important but while instaling express we should not use -D flag because it is also needed in production environment
 
 # in tsconfig file 
 change to "module": "nodenext"
@@ -12,6 +15,18 @@ uncomment to  "resolveJsonModule": true
 uncomment and change to  "outDir": "./dist",  
 =>The "outDir" option specifies the directory where TypeScript will output the compiled .js files.
 "include": ["src/**/*", "src/data/**/*.json", "prisma/**/*"]  
+
+#create a src folder and create an index.ts file 
+dotenv.config()	Loads environment variables from .env so you can use process.env.KEY.
+const app = express()	Creates an Express app instance.
+app.use(express.json())	Parses JSON request bodies automatically and stores in req.body.
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))	Allows resources like images to be loaded from other
+ origins (part of Helmet’s security tools).
+app.use(morgan("common"))	Logs each HTTP request in a standard "common" format (method, URL, status, time).
+app.use(bodyParser.json())	Parses JSON bodies (similar to express.json() — redundant if both are used).
+app.use(bodyParser.urlencoded({ extended: false }))	Parses URL-encoded form data (from HTML forms) into req.body. 
+extended: false → simpler querystring parsing.
+app.use(cors())	Allows API to be accessed from different origins by setting the right headers.
 
 
 
