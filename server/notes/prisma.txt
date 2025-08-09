@@ -1,0 +1,29 @@
+Prisma ORM 
+initialise
+1) npm install prisma --save-dev — Prisma CLI for migrations and generating client.
+npm install @prisma/client — Prisma client library to query your DB.
+
+2)  Initialize Prisma
+Run npx prisma init
+Creates a prisma/ folder with schema.prisma and a .env file for database connection string.
+
+3)
+ Set your database URL in .env
+Example for PostgreSQL:
+DATABASE_URL="postgresql://username:password@localhost:5432/dbname?schema=public"
+
+4) Define your data models in schema.prisma
+
+5)
+Generate Prisma Client
+Run npx prisma generate
+
+This creates a type-safe client in node_modules/@prisma/client to query your DB from code.
+
+6) Create and apply migrations
+npx prisma migrate dev --name init
+Generates SQL migration files reflecting your schema.
+Applies changes to your actual database.
+Updates Prisma client automatically.
+
+7)
