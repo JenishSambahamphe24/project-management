@@ -17,6 +17,7 @@ uncomment and change to  "outDir": "./dist",
 "include": ["src/**/*", "src/data/**/*.json", "prisma/**/*"]  
 
 #create a src folder and create an index.ts file 
+npm i rimraf => Cleaning dist/ or build/ folders before a new build.
 dotenv.config()	Loads environment variables from .env so you can use process.env.KEY.
 const app = express()	Creates an Express app instance.
 app.use(express.json())	Parses JSON request bodies automatically and stores in req.body.
