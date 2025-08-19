@@ -6,3 +6,63 @@
 # setting up redux 
 while setting up redux refer to the code while wrapping with redux store providers, it is different from react. First create DashboardLayout and
 wrap that with storeProvider. i didnt understand it completely but it has to do a lot with separation  of concern while providing store with server side component and client side component
+
+# rtk building api and querries
+🔹 createApi
+=> Used to define API endpoints in one place.
+Basic structure
+
+ export const api = createApi({
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000/" }),
+  reducerPath: "api",
+  tagTypes: ["Projects", "Tasks"],
+  endpoints: (build) => ({ /* queries & mutations */ })
+ })
+
+🔹 build.query
+ Used for fetching data (GET requests).
+ build.query<TResponse, TArg>({
+  query: (arg: TArg) => string | object,
+  providesTags?: (result, error, arg) => Tags[]
+ })
+where
+TResponse → type of response from API.
+TArg → argument type the query accepts.
+query → defines endpoint (string path or {url, method, body}).
+providesTags → tells RTK Query what data this query provides, for caching.
+
+Example
+getProjects: build.query<Project[], void>({
+  query: () => "projects",
+  providesTags: ["Projects"],
+})
+
+Returns an array of projects (Project[]).
+Takes no arguments (void).
+✅ Hook generated:
+const { data, isLoading } = useGetProjectsQuery();
+
+🔹build.mutation
+Used for creating/updating/deleting data (POST/PUT/PATCH/DELETE requests).
+Structure
+build.mutation<TResponse, TArg>({
+  query: (arg: TArg) => string | object,
+  invalidatesTags?: (result, error, arg) => Tags[]
+})
+where,
+TResponse → type of response (usually a single object).
+TArg → argument type passed when calling mutation.
+query → defines endpoint.
+invalidatesTags → tells RTK Query what data to refetch after mutation.
+Example
+createProject: build.mutation<Project, Partial<Project>>({
+  query: (project) => ({
+    url: "projects",
+    method: "POST",
+    body: project,
+  }),
+  invalidatesTags: ["Projects"],
+})
+Returns a single project (Project).
+Takes Partial<Project> (because not all fields are required to create).
+Invalidates "Projects" tag → refetches getProjects.

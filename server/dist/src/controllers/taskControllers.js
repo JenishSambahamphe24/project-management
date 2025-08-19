@@ -29,7 +29,9 @@ const getTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.json(tasks);
     }
     catch (error) {
-        res.status(500).json({ message: "Error retrieving tasks" });
+        res
+            .status(500)
+            .json({ message: `Error retrieving tasks: ${error.message}` });
     }
 });
 exports.getTasks = getTasks;
@@ -68,8 +70,8 @@ const updateTaskStatus = (req, res) => __awaiter(void 0, void 0, void 0, functio
                 id: Number(taskId),
             },
             data: {
-                status: status
-            }
+                status: status,
+            },
         });
         res.json(updatedTask);
     }
